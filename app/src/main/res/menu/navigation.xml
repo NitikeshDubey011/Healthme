@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <item
+        android:id="@+id/navigation_home"
+        android:icon="@drawable/ic_heart"
+        android:title="Home" />
+
+    <item
+        android:id="@+id/navigation_health"
+        android:icon="@drawable/ic_health"
+        android:title="My Health" />
+
+
+    <item
+        android:id="@+id/navigation_appts"
+        android:icon="@drawable/ic_calendar"
+        android:title="My Appts"/>
+
+    <item
+        android:id="@+id/navigation_blogs"
+        android:icon="@drawable/ic_test"
+        android:title="Our Blog" />
+
+    <item
+        android:id="@+id/navigation_account"
+        android:icon="@drawable/ic_account"
+        android:title="Account"/>
+</menu>

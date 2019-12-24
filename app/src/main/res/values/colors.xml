@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#5E92C2</color>
+    <color name="colorPrimaryDark">#25538E</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="textColor">#FFFFFF</color>
+    <color name="textColor2">#E9E9E9</color>
+
+
+    <color name="upperColor">#5E92C2</color>
+    <color name="backColor">#74AFE7</color>
+    <color name="midColor">#5C97CF</color>
+    <color name="lowerColor">#25538E</color>
+
+    <color name="buttonColor">#1BD9E7</color>
+    <color name="fbcolorbutton">#3863A7</color>
+    <color name="otpbutton">#ACFAC7</color>
+
+</resources>

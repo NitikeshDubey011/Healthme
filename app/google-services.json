@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "243489906758",
+    "firebase_url": "https://healthme-9d72c.firebaseio.com",
+    "project_id": "healthme-9d72c",
+    "storage_bucket": "healthme-9d72c.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:243489906758:android:bbeef3c9e682e120576a47",
+        "android_client_info": {
+          "package_name": "com.google.healthme"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "243489906758-dmlm9ogs722gh2dj1671hh6cjqi75ojm.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.google.healthme",
+            "certificate_hash": "62a36be237052ede330a714ebd20d766d102d10a"
+          }
+        },
+        {
+          "client_id": "243489906758-f7n11vq7mn56sj7jmsr1snim4a63a45s.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCjVcGaIEWPvIXHX8pxANCERr3EXEb0438"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "243489906758-f7n11vq7mn56sj7jmsr1snim4a63a45s.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
