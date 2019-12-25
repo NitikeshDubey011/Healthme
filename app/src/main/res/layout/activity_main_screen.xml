@@ -93,7 +93,7 @@
             android:textSize="20sp" />
 
         <Button
-            android:id="@+id/facebookButton"
+            android:id="@+id/login_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -101,6 +101,7 @@
             android:fontFamily="sans-serif"
             android:text="Connect with facebook"
             android:textAllCaps="false"
+            android:onClick="onClick"
             android:textColor="@color/textColor"
             android:textSize="22sp" />
 

@@ -70,15 +70,15 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
             @Override
             public void onClick(View v) {
 
-//                if (otp_number_six.equals(otpEnter.getText().toString()) || otp_number_again.equals(otpEnter.getText().toString())){
-//                    Toast.makeText(Otp.this, "Account Verification Done!!", Toast.LENGTH_SHORT).show();
+                if (otp_number_six.equals(otpEnter.getText().toString()) || otp_number_again.equals(otpEnter.getText().toString())){
+                    Toast.makeText(Otp.this, "Account Verification Done!!", Toast.LENGTH_SHORT).show();
                     startActivity(new Intent(Otp.this, DoctorCategory.class));
-//                    finish();
-//                }
-//                else{
-//                    Toast.makeText(Otp.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
-//                    otpEnter.setText("");
-//                }
+                    finish();
+                }
+                else{
+                    Toast.makeText(Otp.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
+                    otpEnter.setText("");
+                }
             }
         });
         otpResend.setOnClickListener(new View.OnClickListener() {
