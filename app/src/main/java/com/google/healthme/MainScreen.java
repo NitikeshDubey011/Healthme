@@ -113,12 +113,12 @@ public class MainScreen extends AppCompatActivity {
 //                Toast.makeText(MainScreen.this, "Login button clicked", Toast.LENGTH_SHORT).show();
 //            }
 //        });
-//        register.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                startActivity(new Intent(MainScreen.this,SignUp.class));
-//            }
-//        });
+        register.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainScreen.this,SignUp.class));
+            }
+        });
 
 
 // password: CGdL2ZwD8vAVRrkP

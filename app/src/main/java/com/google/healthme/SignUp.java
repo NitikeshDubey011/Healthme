@@ -54,7 +54,7 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
         signup.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                getRandomNumberString();
                 if (email.getText().toString().equals("")) {
                     Toast.makeText(SignUp.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
 
@@ -77,8 +77,8 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
 //                    FragmentManager fragmentManager=getSupportFragmentManager();
 //                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
 //                    fragmentTransaction.replace(R.id.fragment_container, otpScreen).commit();
-                    startActivity(new Intent(SignUp.this,Otp.class));
-                    getRandomNumberString();
+                    startActivity(new Intent(SignUp.this, Otp.class));
+
                     mVerification = SendOtpVerification.createSmsVerification
                             (SendOtpVerification
                                     .config(countryCode + mobile_number.getText().toString())
@@ -90,11 +90,12 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
                                     .expiry("15")
                                     .senderId("HLTHME")
                                     .otplength("6")
+                                    .otp(Otp)
                                     .message("Your HealthMe OTP for login is " + Otp + ". This OTP will expire in 15 minutes.")
                                     .build(), SignUp.this);
                     mVerification.initiate();
 
-
+                    finish();
                 }
             }
         });
@@ -109,7 +110,7 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
         int number = rnd.nextInt(999999);
         Otp = String.format("%06d", number);
         editor.putString("otp_number", Otp);
-        editor.putString("mobile_number",mobile_number.getText().toString());
+        editor.putString("mobile_number", mobile_number.getText().toString());
         editor.apply();
 
     }
@@ -123,6 +124,8 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
     @Override
     public void onInitiated(String response) {
         Log.d(TAG, "Initialized!" + response);
+
+
         //OTP successfully resent/sent.
     }
 

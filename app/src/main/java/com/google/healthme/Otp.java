@@ -87,7 +87,7 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
                 Toast.makeText(Otp.this, "You will get your OTP in a moment", Toast.LENGTH_SHORT).show();
                 resetTimer();
                 getRandomNumberString();
-                otp_number_again=otp_number.getString("otp_number",null);
+                otp_number_again=otp_number_2.getString("otp_number",null);
                 mVerification = SendOtpVerification.createSmsVerification
                         (SendOtpVerification
                                 .config(countryCode + mobile_number)
@@ -99,6 +99,7 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
                                 .expiry("15")
                                 .senderId("HLTHME")
                                 .otplength("6")
+                                .otp(Otp)
                                 .message("Your OTP for login is " + Otp + ". This OTP will expire in 15 minutes.")
                                 .build(), Otp.this);
                 mVerification.resend("text");

@@ -1,29 +1,29 @@
 package com.google.healthme.Model;
 
 public class CategoryModel {
-    private String imageUrl, category;
+    private String imageLink, name;
 
     public CategoryModel() {
     }
 
-    public CategoryModel(String imageUrl, String category) {
-        this.imageUrl = imageUrl;
-        this.category = category;
+    public CategoryModel(String imageLink, String name) {
+        this.imageLink = imageLink;
+        this.name = name;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public String getImageLink() {
+        return imageLink;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setImageLink(String imageLink) {
+        this.imageLink = imageLink;
     }
 
-    public String getCategory() {
-        return category;
+    public String getName() {
+        return name;
     }
 
-    public void setCategory(String category) {
-        this.category = category;
+    public void setName(String name) {
+        this.name = name;
     }
 }
