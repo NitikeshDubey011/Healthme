@@ -67,6 +67,12 @@ public class MainScreen extends AppCompatActivity {
         register = findViewById(R.id.registerTextView);
         facebook = findViewById(R.id.login_button);
         login = findViewById(R.id.loginButton);
+        login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(MainScreen.this,Login.class));
+            }
+        });
         facebook = findViewById(R.id.login_button);
         printKeyHash();
         callbackManager = CallbackManager.Factory.create();

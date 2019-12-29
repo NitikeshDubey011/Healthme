@@ -10,4 +10,6 @@
     <string name="title_notifications">Notifications</string>
     <string name="facebook_app_id">2596277503783147</string>
     <string name="facebook_login_protocol_scheme">fb2596277503783147</string>
+    <string name="minimum_password">Password too short, enter minimum 12 characters!</string>
+    <string name="auth_failed">Authentication failed, check your email and password or sign up</string>
 </resources>

@@ -1,5 +1,6 @@
 package com.google.healthme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -16,14 +17,23 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseAuthException;
+import com.google.firebase.database.FirebaseDatabase;
 import com.msg91.sendotpandroid.library.SendOtpVerification;
 import com.msg91.sendotpandroid.library.Verification;
 import com.msg91.sendotpandroid.library.VerificationListener;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity implements VerificationListener {
 
@@ -34,6 +44,9 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
     private String TAG = "Message";
     private Verification mVerification;
     private String countryCode = "+91";
+
+    private ProgressBar bar;
+
     String Otp;
 
     @Override
@@ -45,7 +58,10 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
         password = findViewById(R.id.createpassword);
         mobile_number = findViewById(R.id.mobileNumber);
         confirm_password = findViewById(R.id.confirmpassword);
-        signup = findViewById(R.id.submit);
+        signup = findViewById(R.id.register);
+        bar = findViewById(R.id.progressBar);
+//        prefs=getApplicationContext().getSharedPreferences("signup_data",0);
+//        editor=prefs.edit();
 
 
         storage = getApplicationContext().getSharedPreferences("OTP", MODE_PRIVATE);
@@ -55,17 +71,19 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
             @Override
             public void onClick(View v) {
                 getRandomNumberString();
-                if (email.getText().toString().equals("")) {
-                    Toast.makeText(SignUp.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
-
-                } else if (mobile_number.getText().toString().equals("")) {
+                if (mobile_number.getText().toString().equals("")) {
                     Toast.makeText(SignUp.this, "Please enter your mobile number", Toast.LENGTH_SHORT).show();
 
-                } else if (password.getText().toString().equals("")) {
-                    Toast.makeText(SignUp.this, "Please enter your password", Toast.LENGTH_SHORT).show();
+                } else if (isValidPhone(mobile_number.getText().toString())) {
+                    Toast.makeText(SignUp.this, "Please enter valid phone number", Toast.LENGTH_SHORT).show();
+                } else if (email.getText().toString().equals("")) {
+                    Toast.makeText(SignUp.this, "Please enter your email address", Toast.LENGTH_SHORT).show();
+
+                } else if (password.getText().toString().equals("") || (password.getText().toString().length() < 12 && !isValidPassword(password.getText().toString()))) {
+                    Toast.makeText(SignUp.this, "Please enter valid password i.e. password should contain (A-Z, a-b, 0-9) and (~! @#$%^&*)", Toast.LENGTH_SHORT).show();
 
                 } else if (confirm_password.getText().toString().equals("")) {
-                    Toast.makeText(SignUp.this, "Please enter your confirm password", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(SignUp.this, "Please enter your password again", Toast.LENGTH_SHORT).show();
 
                 } else if (!password.getText().toString().equals(confirm_password.getText().toString())) {
                     Toast.makeText(SignUp.this, "Please make sure your both passwords are same", Toast.LENGTH_SHORT).show();
@@ -73,10 +91,10 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
                         mobile_number.getText().toString().equals("") &&
                         password.getText().toString().equals("") &&
                         confirm_password.getText().toString().equals(""))) {
-//                    OtpScreen otpScreen=new OtpScreen();
-//                    FragmentManager fragmentManager=getSupportFragmentManager();
-//                    FragmentTransaction fragmentTransaction=fragmentManager.beginTransaction();
-//                    fragmentTransaction.replace(R.id.fragment_container, otpScreen).commit();
+
+                    bar.setVisibility(View.VISIBLE);
+
+
                     startActivity(new Intent(SignUp.this, Otp.class));
 
                     mVerification = SendOtpVerification.createSmsVerification
@@ -97,6 +115,12 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
 
                     finish();
                 }
+
+//                if(password.getText().toString().length()<12 &&!isValidPassword(password.getText().toString())){
+//                    System.out.println("Password is not valid");
+//                }else{
+//                    System.out.println("Valid");
+//                }
             }
         });
 
@@ -124,6 +148,11 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
     @Override
     public void onInitiated(String response) {
         Log.d(TAG, "Initialized!" + response);
+        editor.putString("mb_number",mobile_number.getText().toString());
+        editor.putString("em_address",email.getText().toString());
+        editor.putString("pass",password.getText().toString());
+        editor.apply();
+
 
 
         //OTP successfully resent/sent.
@@ -149,4 +178,33 @@ public class SignUp extends AppCompatActivity implements VerificationListener {
         //OTP  verification failed.
     }
 
+    public boolean isValidPassword(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^(?=.*[0-9])(?=.*[A-Z])(?=.*[@#$%^&+=!])(?=\\S+$).{4,}$";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+
+    }
+
+    public boolean isValidPhone(final String password) {
+
+        Pattern pattern;
+        Matcher matcher;
+        final String PASSWORD_PATTERN = "^([0-9])";
+        pattern = Pattern.compile(PASSWORD_PATTERN);
+        matcher = pattern.matcher(password);
+
+        return matcher.matches();
+
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        bar.setVisibility(View.GONE);
+    }
 }

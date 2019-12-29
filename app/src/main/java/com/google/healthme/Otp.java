@@ -1,5 +1,6 @@
 package com.google.healthme;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
@@ -11,9 +12,14 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.AuthResult;
+import com.google.firebase.auth.FirebaseAuth;
 import com.msg91.sendotpandroid.library.SendOtpVerification;
 import com.msg91.sendotpandroid.library.Verification;
 import com.msg91.sendotpandroid.library.VerificationListener;
@@ -21,15 +27,15 @@ import com.msg91.sendotpandroid.library.VerificationListener;
 import java.util.Locale;
 import java.util.Random;
 
-public class Otp extends AppCompatActivity  implements VerificationListener {
+public class Otp extends AppCompatActivity implements VerificationListener {
     private static final long START_TIME_IN_MILLIS = 25000;
 
-    private Button submitOTP,otpResend;
+    private Button submitOTP, otpResend;
     private EditText otpEnter;
-    private TextView timer,textView,phNumber;
+    private TextView timer, textView, phNumber;
     private SharedPreferences otp_number;
-    private String otp_number_six,mobile_number;
-    private int seconds=0;
+    private String otp_number_six, mobile_number;
+    private int seconds = 0;
     private CountDownTimer mCountDownTimer;
     private String TAG = "Message";
     private Verification mVerification;
@@ -43,6 +49,10 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
     private long mTimeLeftInMillis = START_TIME_IN_MILLIS;
     private SharedPreferences otp_number_2;
     private String otp_number_again;
+    private ProgressBar bar;
+
+    //Firebase
+    private FirebaseAuth database;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,32 +60,62 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
         setContentView(R.layout.activity_otp);
         otpEnter = findViewById(R.id.otp);
         otpResend = findViewById(R.id.otpResend);
-        submitOTP=findViewById(R.id.submit);
-        timer=findViewById(R.id.timer);
-        textView=findViewById(R.id.txtData);
-        phNumber=findViewById(R.id.phNumber);
+        submitOTP = findViewById(R.id.submit);
+//        timer=findViewById(R.id.timer);
+        textView = findViewById(R.id.txtData);
+        phNumber = findViewById(R.id.phNumber);
         otpResend.setEnabled(false);
         storage = getApplicationContext().getSharedPreferences("OTP2", MODE_PRIVATE);
         editor = storage.edit();
-        startTimer();
+        bar = findViewById(R.id.progressBar);
+        // firebase
+        database = FirebaseAuth.getInstance();
 
-        otp_number =getSharedPreferences("OTP", Context.MODE_PRIVATE);
-        otp_number_2=getSharedPreferences("OTP2", Context.MODE_PRIVATE);
-        otp_number_six= otp_number.getString("otp_number", null);
-        mobile_number=otp_number.getString("mobile_number",null);
-        Toast.makeText(Otp.this, otp_number+"", Toast.LENGTH_SHORT).show();
+//        startTimer();
+
+        otp_number = getSharedPreferences("OTP", Context.MODE_PRIVATE);
+        otp_number_2 = getSharedPreferences("OTP2", Context.MODE_PRIVATE);
+        otp_number_six = otp_number.getString("otp_number", null);
+        mobile_number = otp_number.getString("mobile_number", null);
+        Toast.makeText(Otp.this, otp_number + "", Toast.LENGTH_SHORT).show();
 
 //        if (otp_number_six.equals(otpEnter.getText().toString()))
         submitOTP.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                if (otp_number_six.equals(otpEnter.getText().toString()) || otp_number_again.equals(otpEnter.getText().toString())){
+                bar.setVisibility(View.VISIBLE);
+                if (otp_number_six.equals(otpEnter.getText().toString()) || otp_number_again.equals(otpEnter.getText().toString())) {
                     Toast.makeText(Otp.this, "Account Verification Done!!", Toast.LENGTH_SHORT).show();
-                    startActivity(new Intent(Otp.this, DoctorCategory.class));
-                    finish();
-                }
-                else{
+                    // creating USER
+                    String email = otp_number.getString("em_address", null);
+                    String password = otp_number.getString("pass", null);
+                    if (email != null) {
+                        if (password != null) {
+                            database.createUserWithEmailAndPassword(email, password)
+                                    .addOnCompleteListener(Otp.this, new OnCompleteListener<AuthResult>() {
+                                        @Override
+                                        public void onComplete(@NonNull Task<AuthResult> task) {
+                                            Toast.makeText(Otp.this, "createUserWithEmail:onComplete:" + task.isSuccessful(), Toast.LENGTH_SHORT).show();
+
+
+                                            if (!task.isSuccessful()) {
+                                                bar.setVisibility(View.GONE);
+
+                                                Toast.makeText(Otp.this, "Authentication failed." + task.getException(),
+                                                        Toast.LENGTH_SHORT).show();
+
+                                            } else {
+                                                bar.setVisibility(View.GONE);
+                                                startActivity(new Intent(Otp.this, DoctorCategory.class));
+                                                finish();
+                                            }
+                                        }
+                                    });
+                        }
+                    }
+//                    startActivity(new Intent(Otp.this, DoctorCategory.class));
+//                    finish();
+                } else {
                     Toast.makeText(Otp.this, "Please enter valid OTP", Toast.LENGTH_SHORT).show();
                     otpEnter.setText("");
                 }
@@ -85,9 +125,9 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
             @Override
             public void onClick(View v) {
                 Toast.makeText(Otp.this, "You will get your OTP in a moment", Toast.LENGTH_SHORT).show();
-                resetTimer();
+//                resetTimer();
                 getRandomNumberString();
-                otp_number_again=otp_number_2.getString("otp_number",null);
+                otp_number_again = otp_number_2.getString("otp_number", null);
                 mVerification = SendOtpVerification.createSmsVerification
                         (SendOtpVerification
                                 .config(countryCode + mobile_number)
@@ -109,45 +149,45 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
 
     }
 
-    private void startTimer() {
-        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
-            @Override
-            public void onTick(long millisUntilFinished) {
-                mTimeLeftInMillis = millisUntilFinished;
-                updateCountDownText();
-            }
+//    private void startTimer() {
+//        mCountDownTimer = new CountDownTimer(mTimeLeftInMillis, 1000) {
+//            @Override
+//            public void onTick(long millisUntilFinished) {
+//                mTimeLeftInMillis = millisUntilFinished;
+//                updateCountDownText();
+//            }
+//
+//            @Override
+//            public void onFinish() {
+//                mTimerRunning = false;
+//            }
+//        }.start();
+//
+//        mTimerRunning = true;
+//    }
+//    private void resetTimer() {
+//        mTimeLeftInMillis = START_TIME_IN_MILLIS;
+//        updateCountDownText();
+//        startTimer();
+////        timer.setVisibility(View.VISIBLE);
+//        textView.setText("Please wait for OTP ");
+//        otpResend.setEnabled(false);
+//    }
 
-            @Override
-            public void onFinish() {
-                mTimerRunning = false;
-            }
-        }.start();
-
-        mTimerRunning = true;
-    }
-    private void resetTimer() {
-        mTimeLeftInMillis = START_TIME_IN_MILLIS;
-        updateCountDownText();
-        startTimer();
-        timer.setVisibility(View.VISIBLE);
-        textView.setText("Please wait for OTP ");
-        otpResend.setEnabled(false);
-    }
-
-    private void updateCountDownText() {
-        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
-
-        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
-
-        timer.setText(timeLeftFormatted+"s");
-        if (timeLeftFormatted.equals("00")){
-            timer.setVisibility(View.GONE);
-            textView.setText("Didn't got the code? ");
-            otpResend.setEnabled(true);
-        }
-
-
-    }
+//    private void updateCountDownText() {
+//        int seconds = (int) (mTimeLeftInMillis / 1000) % 60;
+//
+//        String timeLeftFormatted = String.format(Locale.getDefault(), "%02d", seconds);
+//
+//        timer.setText(timeLeftFormatted+"s");
+//        if (timeLeftFormatted.equals("00")){
+//            timer.setVisibility(View.GONE);
+//            textView.setText("Didn't got the code? ");
+//            otpResend.setEnabled(true);
+//        }
+//
+//
+//    }
 
     public void getRandomNumberString() {
         // It will generate 6 digit random Number.
@@ -160,6 +200,7 @@ public class Otp extends AppCompatActivity  implements VerificationListener {
         editor.apply();
 
     }
+
     @Override
     public void onInitiated(String response) {
         Log.d(TAG, "Initialized!" + response);

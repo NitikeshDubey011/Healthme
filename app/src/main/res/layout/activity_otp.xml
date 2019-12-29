@@ -1,159 +1,185 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/gradient"
     android:orientation="vertical"
-    tools:context=".OtpScreen">
+    tools:context=".Otp">
 
-    <LinearLayout
-        android:layout_width="match_parent"
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center_horizontal"
-            android:text="Verifying OTP"
-            android:textColor="@color/textColor"
-            android:textSize="32sp"
-            android:textStyle="bold" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
-            android:fontFamily="sans-serif"
-            android:gravity="center_horizontal"
-            android:text="A 6 digit OTP has been sent to"
-            android:textColor="@color/textColor"
-            android:textSize="25sp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="40dp" />
 
-        <TextView
-            android:id="@+id/phNumber"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:fontFamily="sans-serif"
-            android:gravity="center_horizontal"
-            android:text="9888188114"
-            android:textColor="@color/textColor"
-            android:textSize="25sp" />
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="130dp" />
 
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_end="150dp" />
 
-            <ImageView
-                android:id="@+id/image4"
-                android:layout_width="match_parent"
-                android:layout_height="115dp"
-                android:layout_marginTop="20dp"
-                android:src="@drawable/backdrop" />
 
-            <TextView
-                android:id="@+id/txtview"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerHorizontal="true"
-                android:layout_marginTop="50dp"
-                android:fontFamily="sans-serif"
-                android:text="ENTER OTP"
-                android:textColor="@color/textColor"
-                android:textSize="20sp" />
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Verifying OTP"
+        android:textColor="@color/textColor"
+        android:textSize="32sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/top" />
 
-            <EditText
-                android:id="@+id/otp"
-                android:layout_width="match_parent"
-                android:layout_height="50dp"
-                android:layout_below="@+id/txtview"
-                android:layout_centerHorizontal="true"
-                android:fontFamily="serif-monospace"
-                android:background="@drawable/someminorchanges"
-                android:gravity="center_horizontal|center_vertical"
-                android:textColor="@color/textColor2"
-                android:textColorHint="#4DBBBBBB"
-                android:inputType="number"
-                android:maxLength="6"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-        </RelativeLayout>
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="A 6 digit OTP has been sent to"
+        android:textColor="@color/textColor"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/top_second" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
+    <TextView
+        android:id="@+id/phNumber"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="9888188114"
+        android:textColor="@color/textColor"
+        android:textSize="25sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/text" />
 
-            <RelativeLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center_horizontal">
+    <ImageView
+        android:id="@+id/image4"
+        android:layout_width="0dp"
+        android:layout_height="115dp"
+        android:layout_marginTop="20dp"
+        android:src="@drawable/backdrop"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/phNumber" />
 
-                <TextView
-                    android:id="@+id/txtData"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
-                    android:layout_marginTop="20dp"
-                    android:fontFamily="sans-serif"
-                    android:text="Please wait for OTP"
-                    android:textColor="@color/textColor"
-                    android:textSize="15sp" />
+    <TextView
+        android:id="@+id/txtview"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="ENTER OTP"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/phNumber" />
 
-                <TextView
-                    android:id="@+id/timer"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="5dp"
-                    android:layout_marginTop="20dp"
-                    android:layout_toRightOf="@+id/txtData"
-                    android:fontFamily="sans-serif"
-                    android:text="25s"
-                    android:textColor="@android:color/holo_red_dark"
-                    android:textSize="15sp" />
-            </RelativeLayout>
-        </LinearLayout>
+    <EditText
+        android:id="@+id/otp"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/txtview"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/someminorchanges"
+        android:fontFamily="serif-monospace"
+        android:gravity="center_horizontal|center_vertical"
+        android:inputType="number"
+        android:maxLength="6"
+        android:textColor="@color/textColor2"
+        android:textColorHint="#4DBBBBBB"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/txtview" />
 
-        <Button
-            android:id="@+id/otpResend"
-            android:layout_width="100dp"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp"
-            android:background="@drawable/smallbutton"
-            android:fontFamily="sans-serif"
-            android:text="Resend"
-            android:textAllCaps="false"
-            android:textColor="@color/lowerColor" />
-
-        <Button
-            android:id="@+id/submit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
-            android:background="@drawable/buttoncodesecond"
-            android:text="SUBMIT"
-            android:textColor="@color/lowerColor"
-            android:textSize="18sp" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:layout_width="200dp"
+    <TextView
+        android:id="@+id/txtData"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:layout_marginBottom="10dp">
+        android:layout_marginTop="25dp"
+        android:fontFamily="sans-serif"
+        android:text="Didn't get the OTP"
+        android:textColor="@color/textColor"
+        android:textSize="20sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/otp" />
 
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="4dp"
-            android:layout_alignParentBottom="true"
-            android:background="#fff" />
-    </RelativeLayout>
 
-</LinearLayout>
+    <Button
+        android:id="@+id/otpResend"
+        android:layout_width="100dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/smallbutton"
+        android:fontFamily="sans-serif"
+        android:text="Resend"
+        android:textAllCaps="false"
+        android:textColor="@color/lowerColor"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/txtData" />
+
+    <Button
+        android:id="@+id/submit"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/buttoncodesecond"
+        android:text="SUBMIT"
+        android:textColor="@color/lowerColor"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/top_three" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_gravity="center|bottom"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/submit" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
