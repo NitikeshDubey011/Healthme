@@ -16,4 +16,6 @@
     <color name="fbcolorbutton">#3863A7</color>
     <color name="otpbutton">#ACFAC7</color>
 
+    <color name="black_transparent">#79000000</color>
+
 </resources>

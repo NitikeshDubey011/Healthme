@@ -1,47 +1,59 @@
 package com.google.healthme;
 
 import android.os.Bundle;
-import android.view.LayoutInflater;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
 
-import com.bumptech.glide.Glide;
-import com.firebase.ui.database.FirebaseRecyclerAdapter;
-import com.firebase.ui.database.FirebaseRecyclerOptions;
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.firebase.database.DatabaseReference;
-import com.google.firebase.database.FirebaseDatabase;
-import com.google.healthme.Common.Common;
+import com.google.android.material.navigation.NavigationView;
 import com.google.healthme.FragmentsUI.Account;
 import com.google.healthme.FragmentsUI.Home;
 import com.google.healthme.FragmentsUI.MyAppointments;
 import com.google.healthme.FragmentsUI.MyBlogs;
 import com.google.healthme.FragmentsUI.MyHealth;
-import com.google.healthme.Interface.ItemClickListener;
-import com.google.healthme.Model.CategoryModel;
-import com.google.healthme.ViewHolder.CategoryViewHolder;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.GridLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
-
-public class DoctorCategory extends AppCompatActivity {
+public class DoctorCategory extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_doctor_bottom);
+        Toolbar toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+//        Paper.init(this);
+//        String language=Paper.book().read("language");
+//        if (language == null) {
+//
+//            Paper.book().write("language","en");
+//
+//        }
+//        updateView((String)Paper.book().read("language"));
+
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+        ActionBar actionBar = getSupportActionBar();
+        actionBar.setTitle(getResources().getString(R.string.categories));
+        NavigationView navigationView = findViewById(R.id.nav_view_drawer);
+        navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+
+
         BottomNavigationView bottomNavigationView = findViewById(R.id.nav_view);
         bottomNavigationView.setOnNavigationItemSelectedListener(navListener);
-        getSupportFragmentManager().beginTransaction().replace(R.id.nav_host_fragment,
+        getSupportFragmentManager().beginTransaction().add(R.id.nav_host_fragment,
                 new Home()).commit();
     }
 
@@ -73,4 +85,10 @@ public class DoctorCategory extends AppCompatActivity {
                 }
             };
 
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
+        return true;
+    }
 }

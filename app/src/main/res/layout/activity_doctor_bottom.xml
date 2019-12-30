@@ -8,21 +8,33 @@
         android:id="@+id/relative"
         android:layout_width="match_parent"
         android:layout_height="90dp">
-        <TextView
-            android:id="@+id/toolbar"
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:id="@+id/appBarLayout"
             android:layout_width="match_parent"
             android:layout_height="90dp"
             android:background="@drawable/gradient"
-            />
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Categories"
-            android:textSize="35sp"
-            android:textColor="@color/textColor"
-            android:layout_marginLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_marginBottom="10dp"/>
+            android:theme="@style/AppBarOverlay">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:background="@drawable/gradient"
+                app:popupTheme="@style/PopupOverlay">
+
+            </androidx.appcompat.widget.Toolbar>
+
+        </com.google.android.material.appbar.AppBarLayout>
+        <!--        <TextView-->
+        <!--            android:layout_width="wrap_content"-->
+        <!--            android:layout_height="wrap_content"-->
+        <!--            android:text="Categories"-->
+        <!--            android:textSize="35sp"-->
+        <!--            android:textColor="@color/textColor"-->
+        <!--            android:layout_marginLeft="10dp"-->
+        <!--            android:layout_alignParentBottom="true"-->
+        <!--            android:layout_marginBottom="10dp"/>-->
     </RelativeLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
@@ -38,6 +50,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@+id/nav_view"
+        android:background="#fff"
         android:layout_below="@+id/relative"/>
 
 </RelativeLayout>
