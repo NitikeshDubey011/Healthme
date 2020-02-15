@@ -1,0 +1,114 @@
+{
+  "DoctorImages": {
+    "10": {
+      "name": "Endocrinilogist",
+      "imageLink": "https://drive.google.com/open?id=1h5ozNOIUKOrZIRgB1akbTgj6yWKXHoEE"
+    },
+    "11": {
+      "name": "Epidemiology",
+      "imageLink": "https://drive.google.com/open?id=1ZADf4JzFpLB6mIu6xbV43mPRvF34rNCk"
+    },
+    "12": {
+      "name": "Physician",
+      "imageLink": "https://drive.google.com/open?id=1yULT78pmGplaz7nXqDf5iTI5lDcisQ2X"
+    },
+    "01": {
+      "name": "Acupuncturist",
+      "imageLink": "https://drive.google.com/open?id=1awUlVSRjMInnFfB4EpGtIXG2NVF1xJNi"
+    },
+    "02": {
+      "name": "Allergist",
+      "imageLink": "https://drive.google.com/open?id=1_hgzuy4kj54lnimwr-sGm_YZp8fJq_NX"
+    },
+    "03": {
+      "name": "Anaesthesiologist",
+      "imageLink": "https://drive.google.com/open?id=1O_nWANaKkHBZ0EciPjQH91jZUUP6_MqC"
+    },
+    "04": {
+      "name": "Andrologist",
+      "imageLink": "https://drive.google.com/open?id=1uG5nSKzfwy5-3IOkCyjT-XHkEtOHJOjl"
+    },
+    "05": {
+      "name": "Audiologist",
+      "imageLink": "https://drive.google.com/open?id=1RE-lvXmNUS3fic8VVYiwQ7_CT15hwyFo"
+    },
+    "06": {
+      "name": "Cardiac",
+      "imageLink": "https://drive.google.com/open?id=1d-P1vtwC1Tad2OrTXID2xRLEwKgg2VoW"
+    },
+    "07": {
+      "name": "Cardiologist",
+      "imageLink": "https://drive.google.com/open?id=1xz7Bb2QgPLMNptL8uZNsJau9a-oh5iVU"
+    },
+    "08": {
+      "name": "Chiropractor",
+      "imageLink": "https://drive.google.com/open?id=14k_BFCvrmhmeif8BeEHntVHjq4vDBJaw"
+    },
+    "09": {
+      "name": "Dermatologist",
+      "imageLink": "https://drive.google.com/open?id=1MVDInZ75ERNKBWAXD3T_Sy-nFi4v8d02"
+    }
+  },
+  "AllDoctors": {
+    "10": {
+      "doctorName": "Endocrinilogist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1h5ozNOIUKOrZIRgB1akbTgj6yWKXHoEE",
+      "doctorQualification": "MBBS"
+    },
+    "11": {
+      "doctorName": "Epidemiology",
+      "doctorProfileImage": "https://drive.google.com/open?id=1ZADf4JzFpLB6mIu6xbV43mPRvF34rNCk",
+      "doctorQualification": "MBBS"
+    },
+    "12": {
+      "doctorName": "Physician",
+      "doctorProfileImage": "https://drive.google.com/open?id=1yULT78pmGplaz7nXqDf5iTI5lDcisQ2X",
+      "doctorQualification": "MBBS"
+    },
+    "01": {
+      "doctorName": "Acupuncturist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1awUlVSRjMInnFfB4EpGtIXG2NVF1xJNi",
+      "doctorQualification": "MBBS"
+    },
+    "02": {
+      "doctorName": "Allergist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1_hgzuy4kj54lnimwr-sGm_YZp8fJq_NX",
+      "doctorQualification": "MBBS"
+    },
+    "03": {
+      "doctorName": "Anaesthesiologist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1O_nWANaKkHBZ0EciPjQH91jZUUP6_MqC",
+      "doctorQualification": "MBBS"
+    },
+    "04": {
+      "doctorName": "Andrologist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1uG5nSKzfwy5-3IOkCyjT-XHkEtOHJOjl",
+      "doctorQualification": "MBBS"
+    },
+    "05": {
+      "doctorName": "Audiologist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1RE-lvXmNUS3fic8VVYiwQ7_CT15hwyFo",
+      "doctorQualification": "MBBS"
+    },
+    "06": {
+      "doctorName": "Cardiac",
+      "doctorProfileImage": "https://drive.google.com/open?id=1d-P1vtwC1Tad2OrTXID2xRLEwKgg2VoW",
+      "doctorQualification": "MBBS"
+    },
+    "07": {
+      "doctorName": "Cardiologist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1xz7Bb2QgPLMNptL8uZNsJau9a-oh5iVU",
+      "doctorQualification": "MBBS"
+    },
+    "08": {
+      "doctorName": "Chiropractor",
+      "doctorProfileImage": "https://drive.google.com/open?id=14k_BFCvrmhmeif8BeEHntVHjq4vDBJaw",
+      "doctorQualification": "MBBS"
+    },
+    "09": {
+      "doctorName": "Dermatologist",
+      "doctorProfileImage": "https://drive.google.com/open?id=1MVDInZ75ERNKBWAXD3T_Sy-nFi4v8d02",
+      "doctorQualification": "MBBS"
+    }
+  }
+}

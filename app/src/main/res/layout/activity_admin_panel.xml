@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient"
+    tools:context=".AdminPanel">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/left"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/center"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="200dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/right"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_end="16dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="80dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_second"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="210dp" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/top_three"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="480dp" />
+
+
+    <TextView
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Admin Panel"
+        android:textAllCaps="true"
+        android:textColor="@color/textColor"
+        android:textSize="35sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/top" />
+
+    <TextView
+        android:id="@+id/text1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="left"
+        android:text="Doctor Pending Request"
+        android:textColor="@color/textColor"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/top_second" />
+
+    <TextView
+        android:id="@+id/text2"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="left"
+        android:text="Withdraw Pending Request"
+        android:textColor="@color/textColor"
+        android:textSize="22sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintRight_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/top_three" />
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/pending"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="center_horizontal|center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintLeft_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/text1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            app:srcCompat="@drawable/ic_homework" />
+
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/text3"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Pending"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintTop_toBottomOf="@+id/pending" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/approove"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/center"
+        app:layout_constraintLeft_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/text1">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            app:srcCompat="@drawable/ic_approval" />
+    </androidx.cardview.widget.CardView>
+
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/withdraw"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_gravity="right|center_vertical"
+        android:layout_marginTop="20dp"
+        android:layout_weight="1"
+        app:cardCornerRadius="15dp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintLeft_toRightOf="@+id/right"
+        app:layout_constraintTop_toBottomOf="@+id/text2">
+
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal|center_vertical"
+            app:srcCompat="@drawable/ic_withdraw" />
+    </androidx.cardview.widget.CardView>
+
+
+    <TextView
+        android:id="@+id/text4"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Approved"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/center"
+        app:layout_constraintTop_toBottomOf="@+id/approove" />
+
+    <TextView
+        android:id="@+id/text5"
+        android:layout_width="120dp"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="40dp"
+        android:fontFamily="sans-serif"
+        android:gravity="center_horizontal"
+        android:text="Withdraw"
+        android:textColor="@color/textColor"
+        android:textSize="18sp"
+        app:layout_constraintLeft_toLeftOf="@+id/left"
+        app:layout_constraintTop_toBottomOf="@+id/withdraw" />
+</androidx.constraintlayout.widget.ConstraintLayout>

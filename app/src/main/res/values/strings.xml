@@ -27,4 +27,57 @@
     <string name="menu_tools">Tools</string>
     <string name="menu_share">Share</string>
     <string name="menu_send">Send</string>
+    <string name="attach_profile_image">Attach Profile Image</string>
+
+    <string-array name="gender">
+        <item>Male</item>
+        <item>Female</item>
+
+    </string-array>
+
+    <string-array name="doctor_categories">
+        <item>Accupunturist</item>
+        <item>Allergist</item>
+        <item>Anaesthesiologist</item>
+        <item>Andrologist</item>
+        <item>Audiologist</item>
+        <item>Cardiologist</item>
+        <item>Chiropractor</item>
+        <item>Dermatologist</item>
+        <item>Endocrinlogist</item>
+        <item>Epidemiology</item>
+        <item>Physician</item>
+        <item>Gastroenterologist</item>
+        <item>Geriatrician</item>
+        <item>Gynecologist</item>
+        <item>Hematologist</item>
+        <item>Hepatologist</item>
+        <item>Homeopathic</item>
+        <item>Hyperbaric</item>
+        <item>Immunologist</item>
+        <item>Infectious Disease Specialist</item>
+        <item>Intensivist</item>
+        <item>Maxillofacial</item>
+        <item>Microbiologst</item>
+        <item>Naturopathic</item>
+        <item>Neonatologist</item>
+        <item>Neurologist</item>
+        <item>Nuclear Specialist</item>
+        <item>Oncologist</item>
+        <item>Ophthalmologist</item>
+        <item>Orthopedic</item>
+        <item>Otolaryngologist ENT</item>
+        <item>Pathologists</item>
+        <item>Pediatrician</item>
+        <item>Perinatologist</item>
+        <item>Periodontist</item>
+        <item>Physiatrist</item>
+        <item>Plastic Surgeon</item>
+        <item>Pulmonologist</item>
+        <item>Radiologist</item>
+        <item>Rheumatologist</item>
+        <item>Spinal Cord Specialiast</item>
+        <item>Thoracic Surgeon</item>
+        <item>Urologist</item>
+    </string-array>
 </resources>
